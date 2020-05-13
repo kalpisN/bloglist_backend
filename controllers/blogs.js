@@ -21,15 +21,17 @@ blogRouter.post('/', async (request, response) => {
     title: body.title,
     author: body.author,
     url: body.url,
-    blogs: body.blogs,
+    blogs: body.blogs || 0,
     likes: body.likes === undefined ? 0 : body.likes,
     user: user._id
   })
   const savedBlog = await blog.save()
+
   user.blogs = user.blogs.concat(savedBlog._id)
   await user.save()
 
-  response.json(savedBlog.toJSON)
+  response.json(savedBlog.toJSON())
+
 })
 
 blogRouter.delete('/:id', async (request, response) => {
