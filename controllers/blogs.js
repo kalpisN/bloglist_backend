@@ -27,6 +27,7 @@ blogRouter.post('/', async (request, response) => {
     title: body.title,
     author: body.author,
     url: body.url,
+    blogs: body.blogs || 0,
     likes: body.likes === undefined ? 0 : body.likes,
     user: user._id
   })

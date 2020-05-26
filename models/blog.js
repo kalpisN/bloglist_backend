@@ -10,6 +10,7 @@ const blogSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  blogs: Number,
   likes: Number,
   comments: [
     {
